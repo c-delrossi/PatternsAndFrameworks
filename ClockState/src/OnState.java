@@ -11,6 +11,7 @@ public class OnState extends ClockState {
     @Override
     public Class<? extends ClockState> tick() {
         context.incrementSeconds();
+        System.out.println(context.getHours() + ":" + context.getMinutes() + ":" + context.getSeconds());
         return this.getClass();
     }
 }

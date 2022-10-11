@@ -14,7 +14,6 @@ public class Clock {
 
     public void tick() {
         changeState(current.tick());
-        System.out.println(context.getHours() + ":" + context.getMinutes() + ":" + context.getSeconds());
     }
 
     public void onOff() {
