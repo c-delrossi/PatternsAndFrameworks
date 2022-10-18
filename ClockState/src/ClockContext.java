@@ -1,37 +1,23 @@
 public class ClockContext {
-    public int seconds;
-    public int minutes;
-    public int hours;
+    private Time time;
 
-    public void incrementSeconds() {
-        seconds = ++seconds % 60;
-        if (seconds == 0)
-            incrementMinutes();
+    public ClockContext() {
+        time = new Time(null, null, null);
+    }
+
+    public void tick() {
+        time = time.next();
     }
 
     public void incrementMinutes() {
-        minutes = ++minutes % 60;
-        if (minutes == 0)
-            incrementHours();
+        time = time.nextMinute();
     }
 
     public void incrementHours() {
-        hours = ++hours % 60;
-    }
-
-    public int getSeconds() {
-        return seconds;
-    }
-
-    public int getMinutes() {
-        return minutes;
-    }
-
-    public int getHours() {
-        return hours;
+        time = time.nextHour();
     }
 
     public String getTime() {
-        return getHours() + ":" + getMinutes() + ":" + getSeconds();
+        return time.toString();
     }
 }

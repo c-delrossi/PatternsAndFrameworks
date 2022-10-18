@@ -10,7 +10,7 @@ public class OnState extends ClockState {
 
     @Override
     public Class<? extends ClockState> tick() {
-        context.incrementSeconds();
+        context.tick();
         System.out.println(context.getTime());
         return this.getClass();
     }
