@@ -9,4 +9,7 @@ public abstract class ClockState {
 
     public abstract Class<? extends ClockState> onOff();
     public abstract Class<? extends ClockState> tick();
+    public abstract Class<? extends ClockState> increment();
+    public abstract Class<? extends ClockState> toggleSettings();
+    public abstract Class<? extends ClockState> changeMode();
 }

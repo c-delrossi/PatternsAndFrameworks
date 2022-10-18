@@ -30,4 +30,8 @@ public class ClockContext {
     public int getHours() {
         return hours;
     }
+
+    public String getTime() {
+        return getHours() + ":" + getMinutes() + ":" + getSeconds();
+    }
 }

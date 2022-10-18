@@ -7,6 +7,8 @@ public class Clock {
 
     public Clock() {
         stateMap.put(OnState.class, new OnState(context));
+        stateMap.put(SetMinuteState.class, new SetMinuteState(context));
+        stateMap.put(SetHourState.class, new SetHourState(context));
         var offState = new OffState(context);
         stateMap.put(OffState.class, offState);
         current = offState;
@@ -18,6 +20,18 @@ public class Clock {
 
     public void onOff() {
         changeState(current.onOff());
+    }
+
+    public void changeMode() {
+        changeState(current.changeMode());
+    }
+
+    public void increment() {
+        changeState(current.increment());
+    }
+
+    public void toggleSettings() {
+        changeState(current.toggleSettings());
     }
 
     private void changeState(Class<? extends ClockState> stateClass) {
