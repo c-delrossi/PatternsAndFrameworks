@@ -6,10 +6,8 @@ public final class Minutes {
     public Minutes(int amount) {
         if (amount < 0) {
             minutes = 0;
-        } else if (amount > 59) {
-            minutes = 59;
         } else {
-            minutes = amount;
+            minutes = Math.min(amount, 59);
         }
     }
 

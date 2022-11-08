@@ -11,31 +11,6 @@ public final class Time {
         this.seconds = Objects.requireNonNullElseGet(seconds, () -> new Seconds(0));
     }
 
-    public Time next() {
-        Seconds s = seconds.next();
-        Minutes m = minutes;
-        Hours h = hours;
-        if (s.getSeconds() == 0) {
-            m = minutes.next();
-            if (m.getMinutes() == 0) {
-                h = hours.next();
-            }
-        }
-        return new Time(h, m, s);
-    }
-
-    public Time nextHour() {
-        return new Time(hours.next(), minutes, seconds);
-    }
-
-    public Time nextMinute() {
-        return new Time(hours, minutes.next(), seconds);
-    }
-
-    public Time nextSecond() {
-        return new Time(hours, minutes, seconds.next());
-    }
-
     public int getHours() {
         return hours.getHours();
     }

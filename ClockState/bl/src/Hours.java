@@ -7,10 +7,8 @@ public final class Hours {
 
         if (amount < 0) {
             hours = 0;
-        } else if (amount > 23) {
-            hours = 23;
         } else {
-            hours = amount;
+            hours = Math.min(amount, 23);
         }
     }
 

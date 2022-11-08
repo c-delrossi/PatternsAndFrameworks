@@ -3,20 +3,20 @@ import java.util.List;
 import java.util.TimerTask;
 
 class TickTimerTask extends TimerTask {
-    private final List<Clock> clockList = new LinkedList<>();
+    private final List<ClockController> controllerList = new LinkedList<>();
 
     @Override
     public void run() {
-        for (Clock clock : clockList) {
-            clock.tick();
+        for (ClockController controller : controllerList) {
+            controller.tick();
         }
     }
 
-    public void subscribe(Clock clock) {
-        clockList.add(clock);
+    public void subscribe(ClockController controller) {
+        controllerList.add(controller);
     }
 
-    public void unsubscribe(Clock clock) {
-        clockList.remove(clock);
+    public void unsubscribe(ClockController controller) {
+        controllerList.remove(controller);
     }
 }

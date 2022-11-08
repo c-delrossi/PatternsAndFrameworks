@@ -1,5 +1,3 @@
-import java.time.Clock;
-
 public abstract class ClockState {
     protected ClockContext context;
 

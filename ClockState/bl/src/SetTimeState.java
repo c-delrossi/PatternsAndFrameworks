@@ -15,6 +15,7 @@ public abstract class SetTimeState extends ClockState {
 
     @Override
     public Class<? extends ClockState> tick() {
+        context.tick();
         return this.getClass();
     }
 }

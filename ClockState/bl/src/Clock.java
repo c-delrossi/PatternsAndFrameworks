@@ -14,6 +14,22 @@ public class Clock {
         current = offState;
     }
 
+    public boolean isOn() {
+        return !(current instanceof OffState);
+    }
+
+    public boolean isChangingSettings() {
+        return current instanceof SetTimeState;
+    }
+
+    public boolean isIncrementingMinutes() {
+        return current instanceof SetMinuteState;
+    }
+
+    public boolean isIncrementingHours() {
+        return current instanceof SetHourState;
+    }
+
     public void tick() {
         changeState(current.tick());
     }
@@ -36,5 +52,9 @@ public class Clock {
 
     private void changeState(Class<? extends ClockState> stateClass) {
         current = stateMap.get(stateClass);
+    }
+
+    public Time getTime() {
+        return context.getTime();
     }
 }

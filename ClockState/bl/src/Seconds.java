@@ -6,10 +6,8 @@ public final class Seconds {
     public Seconds(int amount) {
         if (amount >= 60) {
             seconds = 59;
-        } else if (amount < 0) {
-            seconds = 0;
         } else {
-            seconds = amount;
+            seconds = Math.max(amount, 0);
         }
     }
 

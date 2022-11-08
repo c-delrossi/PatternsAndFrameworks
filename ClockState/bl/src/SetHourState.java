@@ -6,7 +6,6 @@ public class SetHourState extends SetTimeState {
     @Override
     public Class<? extends ClockState> increment() {
         context.incrementHours();
-        System.out.println(context.getTime());
         return this.getClass();
     }
 
