@@ -1,13 +1,15 @@
-import java.util.Scanner;
-import java.util.Timer;
-
 public class ClockController {
     private final Clock clock = new Clock();
     private final IOStrategy ioStrategy;
     private boolean ended = false;
 
-    public ClockController(IOStrategy ioStrategy) {
-        this.ioStrategy = ioStrategy;
+    private final int refreshRate;
+
+    public ClockController() {
+        ClockConfig config = new ClockConfig();
+        config.loadConfig();
+        this.ioStrategy = config.getStrategy();
+        this.refreshRate = config.getRefreshRate();
     }
 
     private void executeCommand(String input) {
@@ -100,9 +102,15 @@ public class ClockController {
         displayMenu();
     }
 
+    private boolean shouldRefresh() {
+        Time time = clock.getTime();
+        int secondsSinceMidnight = time.getSeconds() + 60 * (time.getMinutes() + 24 * time.getHours());
+        return secondsSinceMidnight % refreshRate == 0 && clock.isOn();
+    }
+
     public void tick() {
         clock.tick();
-        if (clock.isOn() && clock.getTime().getSeconds() == 0) {
+        if (shouldRefresh()) {
             displayClock();
             displayMenu();
         }

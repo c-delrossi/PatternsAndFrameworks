@@ -5,7 +5,8 @@ public class ConsoleStrategy implements IOStrategy {
     private String getDisplayString(Time time) {
         String hours = time.getHours() < 10 ? "0" + time.getHours() : Integer.toString(time.getHours());
         String minutes = time.getMinutes() < 10 ? "0" + time.getMinutes() : Integer.toString(time.getMinutes());
-        return "---------\n| " + hours + ":" + minutes + " |\n---------";
+        String seconds = time.getSeconds() < 10 ? "0" + time.getSeconds() : Integer.toString(time.getSeconds());
+        return "------------\n| " + hours + ":" + minutes + ":" + seconds + " |\n------------";
     }
     @Override
     public void display(Time time) {
