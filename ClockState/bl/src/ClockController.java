@@ -54,15 +54,13 @@ public class ClockController {
     }
 
     public void run() {
-        TickTimerTask timerTask = new TickTimerTask();
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 1000);
-        timerTask.subscribe(this);
+        ClockTimer clockTimer = new ClockTimer();
+        clockTimer.subscribe(this);
         while (!ended) {
             String command = ioStrategy.read();
             executeCommand(command);
         }
-        timer.cancel();
+        clockTimer.cancel();
     }
 
     private void increment() {
