@@ -6,8 +6,17 @@ public class ClockController {
     private final int refreshRate;
 
     public ClockController() {
-        ClockConfig config = new ClockConfig();
-        config.loadConfig();
+        ConfigAnything configAnything = new ConfigObject();
+        ConfigAnything clock = new ConfigObject();
+        ConfigAnything io = new ConfigObject();
+
+        configAnything.set("clock", clock);
+        clock.set("io", io);
+
+        clock.set("refreshRate", new ConfigNumber(5));
+        io.set("strategy", new ConfigString("ConsoleStrategy"));
+
+        ClockConfig config = new ClockConfig(configAnything);
         this.ioStrategy = config.getStrategy();
         this.refreshRate = config.getRefreshRate();
     }
